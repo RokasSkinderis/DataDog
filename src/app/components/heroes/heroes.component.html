@@ -1,0 +1,38 @@
+<app-dashboard></app-dashboard>
+<section>
+  <div class="filter">
+    <ul>
+      <li (click)="filterHeroes('name')">Name</li>
+      <li>
+        <label>
+          <select [(ngModel)]="role">
+            <option selected disabled value>Role</option>
+            <option>Initiator</option>
+            <option>Durable</option>
+            <option>Disabler</option>
+            <option>Jungler</option>
+            <option>Carry</option>
+            <option>Nuker</option>
+            <option>Support</option>
+            <option>Pusher</option>
+            <option>Escape</option>
+          </select>
+        </label>
+      </li>
+      <li>
+        <button class="button" type="submit" (click)="filterHeroes(role)">Filter by Role</button>
+      </li>
+    </ul>
+  </div>
+  <div class="heroList" *ngFor="let hero of heroList">
+    <div class="hero">
+      <img src="/assets/images/{{hero.name}}_lg.png">
+      <div>
+        <h5>{{hero.localized_name}}</h5>
+        <h6>Attribute: {{hero.primary_attr}}</h6>
+        <h6>{{hero.attack_type}}</h6>
+        <h6>{{hero.roles}}</h6>
+      </div>
+    </div>
+  </div>
+</section>

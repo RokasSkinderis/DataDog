@@ -1,0 +1,58 @@
+<header>
+  <nav>
+    <ul>
+      <li routerLink="/Dashboard" (click)="displayProfile = false">Home</li>
+      <li routerLink="/Dashboard/heroes" (click)="displayProfile = false">Heroes</li>
+    </ul>
+  </nav>
+  <h4>Welcome to yet another Dota 2 stats page</h4>
+  <div class="search">
+    <input [formControl]="searchInput" placeholder="Search users" type="search">
+    <ul>
+      <ng-container *ngFor="let option of searchResults">
+        <li>
+          <div (click)="showProfile(option.account_id)">
+            <img src={{option.avatarfull}}>
+            {{option.personaname}}
+          </div>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+  <div>
+
+  </div>
+</header>
+
+<section class="profile" *ngIf="displayProfile">
+  <div class="leftSide">
+    <h3>Profile</h3>
+    <img src={{account.profile.avatarfull}}>
+    <h4>{{account.profile.personaname}}</h4>
+    <div>Country: {{account.profile.loccountrycode}}</div>
+    <div>Number of games - {{account.win + account.lose}}</div>
+    <div>W - {{account.win}}</div>
+    <div>L - {{account.lose}}</div>
+  </div>
+  <div class="rightSide">
+    <h5>Solo MMR: {{account.solo_competitive_rank}}</h5>
+    <h5>Team MMR: {{account.competitive_rank}}</h5>
+    <h5>MMR estimated {{account.mmr_estimate.estimate}}</h5>
+    <a href={{account.profile.profileurl}} target="_blank">Link to steam account</a>
+  </div>
+</section>
+
+<ng-container *ngIf="displayProfile">
+  <section class="matches" *ngFor="let match of matches">
+    <div class="match" *ngFor="let i of match">
+      <div *ngFor="let hero of heroList">
+        <div *ngIf="i.hero_id === hero.id">
+          <img src="/assets/images/{{hero.name}}_lg.png">
+          <span style="color: #78e08f" *ngIf="i.radiant_win">W</span>
+          <span style="color: #e55039" *ngIf="!i.radiant_win">L</span>
+        </div>
+      </div>
+      <p>Stats<br>{{i.kills}}/{{i.deaths}}/{{i.assists}}</p>
+    </div>
+  </section>
+</ng-container>

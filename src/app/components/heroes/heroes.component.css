@@ -1,0 +1,164 @@
+section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.filter {
+  font-family: "Agency FB", sans-serif;
+  width: 100%;
+  vertical-align: middle;
+  font-size: 0;
+  padding-top: 15px;
+  background-color: #f5f5f5;
+  -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.75);
+}
+
+.filter ul {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.filter ul li {
+  display: inline-block;
+  width: 25%;
+  font-size: 20px;
+  margin-bottom: 0;
+  color: #0a3d62;
+}
+
+.filter ul li:nth-of-type(1),
+.filter ul li:nth-of-type(2) {
+  cursor: pointer;
+}
+
+.filter ul li label,
+.filter ul li button {
+  display: inline-block;
+  width: 50%;
+}
+
+.filter ul li label select {
+  background-color: #f5f5f5;
+}
+
+.filter ul li button {
+  font-size: 16px;
+}
+
+.heroList {
+  width: 25%;
+}
+
+.hero {
+  background: linear-gradient(#3c6382, #0a3d62);
+  color: #fff;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);
+  display: flex;
+}
+
+.hero div {
+  width: 48%;
+}
+
+.hero img {
+  width: 50%;
+  margin-right: 2%
+}
+
+.heroList .hero h5 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.hero h6 {
+  font-weight: 300;
+  font-size: 12px;
+  margin-bottom: 0;
+  line-height: 20px;
+}
+
+.hero h6:nth-of-type(3) {
+  font-size: 10px;
+}
+
+@media only screen and (max-width: 1400px) {
+  .heroList {
+    width: 33.33%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .heroList {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  section {
+    display: block;
+    font-size: 0;
+  }
+
+  .heroList {
+    overflow: hidden;
+    display: inline-block;
+    width: 50%;
+    font-size: 12px;
+  }
+
+  .filter ul li {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 725px) {
+  section {
+    display: block;
+  }
+
+  .heroList {
+    display: block;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1140px) {
+
+  .filter ul li {
+    font-size: 16px;
+  }
+
+  .filter ul li button {
+    font-size: 16px;
+    border: none;
+    font-weight: 300;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+  .filter {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .filter ul li label,
+  .filter ul li button {
+    display: block;
+    width: 100%;
+  }
+}
+
+.matches {
+  color: #000;
+}
