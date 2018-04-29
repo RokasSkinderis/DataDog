@@ -2,11 +2,21 @@
 <section>
   <div class="filter">
     <ul>
-      <li (click)="filterHeroes('name')">Name</li>
+      <li (click)="filterByHeroName()">Sort by name</li>
       <li>
-        <label>
+        <label>Attribute
+          <select [(ngModel)]="atr">
+            <option value="">Any</option>
+            <option value="agi">Agility</option>
+            <option value="int">Intelligence</option>
+            <option value="str">Strength</option>
+          </select>
+        </label>
+      </li>
+      <li>
+        <label>Role
           <select [(ngModel)]="role">
-            <option selected disabled value>Role</option>
+            <option value="">All</option>
             <option>Initiator</option>
             <option>Durable</option>
             <option>Disabler</option>
@@ -19,20 +29,23 @@
           </select>
         </label>
       </li>
-      <li>
-        <button class="button" type="submit" (click)="filterHeroes(role)">Filter by Role</button>
-      </li>
     </ul>
   </div>
-  <div class="heroList" *ngFor="let hero of heroList">
-    <div class="hero">
-      <img src="/assets/images/{{hero.name}}_lg.png">
-      <div>
-        <h5>{{hero.localized_name}}</h5>
-        <h6>Attribute: {{hero.primary_attr}}</h6>
-        <h6>{{hero.attack_type}}</h6>
-        <h6>{{hero.roles}}</h6>
+  <ng-container *ngFor="let hero of heroList">
+    <ng-container *ngIf="hero.primary_attr.indexOf(atr) !== -1">
+      <div class="heroList" *ngIf="hero.roles[0].indexOf(role) !== -1">
+        <div class="hero">
+          <img src="/assets/images/{{hero.name}}_lg.png">
+          <div>
+            <h5>{{hero.localized_name}}</h5>
+            <h6 *ngIf="hero.primary_attr.indexOf('agi') !== -1">Attribute: Agility</h6>
+            <h6 *ngIf="hero.primary_attr.indexOf('int') !== -1">Attribute: Intelligence</h6>
+            <h6 *ngIf="hero.primary_attr.indexOf('str') !== -1">Attribute: Strength</h6>
+            <h6>{{hero.attack_type}}</h6>
+            <h6>{{hero.roles}}</h6>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+    </ng-container>
+  </ng-container>
 </section>

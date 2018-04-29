@@ -12,49 +12,37 @@ export class HeroesComponent implements OnInit {
   role: string;
   atr: string;
   name: string;
+  hero: Hero;
 
   constructor(public Http: DotaApiService) {
+    this.hero = new Hero();
     this.heroList = [];
-    this.name = 'name';
-    this.atr = 'atr';
-    this.role = 'Role';
+    this.name = '';
+    this.atr = '';
+    this.role = '';
     this.getHeroes();
   }
 
-  filterHeroes(data): void {
-    switch (data) {
-      case this.name:
-        let unsortedNames = this.heroList;
-        unsortedNames.sort(function (a, b) {
-          if (a.localized_name < b.localized_name) return -1;
-          if (a.localized_name > b.localized_name) return 1;
-          return 0;
-        });
-        break;
-      case this.role:
-        const role = this.role;
-        const sortedRoles = [];
-        const a = this.heroList.map(key => key, value => this.role);
-        a.map(function (item, index) {
-          const roles = item.roles[0].split(', ');
-          for (let i = 0; i <= roles.length; ++i) {
-            if (roles[i] === role) {
-              sortedRoles.push(item);
-            }
-          }
-        });
-        this.heroList = sortedRoles;
-        break;
-      default:
-        break;
-    }
+  filterByHeroName(): void {
+    this.heroList.sort(function (a, b) {
+      if (a.localized_name < b.localized_name) {
+        return -1;
+      } else if (a.localized_name > b.localized_name) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
   }
 
   getHeroes(): void {
+    // Kreipiasi i dotaApiService
     this.Http.getHeroes().subscribe({
       next: (heroesList: Array<Hero>) => {
         for (const hero of heroesList) {
+          // slicina name del img src patho
           hero.name = hero.name.slice(14);
+          // Isskaido roles, del patogesnio filtravimo ir padeda tarpa po kablelio, del stiliaus, kad nebutu visos roles, vienas zodis.
           hero.roles = [hero.roles.join(', ')];
           this.heroList.push(hero);
         }

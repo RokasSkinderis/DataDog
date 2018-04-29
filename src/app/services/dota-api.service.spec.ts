@@ -1,6 +1,5 @@
-import { TestBed, inject } from '@angular/core/testing';
-
-import { DotaApiService } from './dota-api.service';
+import {TestBed} from '@angular/core/testing';
+import {DotaApiService} from './dota-api.service';
 
 describe('DotaApiService', () => {
   beforeEach(() => {

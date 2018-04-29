@@ -11,7 +11,7 @@
     <ul>
       <ng-container *ngFor="let option of searchResults">
         <li>
-          <div (click)="showProfile(option.account_id)">
+          <div (click)="matches = []; showProfile(option.account_id)">
             <img src={{option.avatarfull}}>
             {{option.personaname}}
           </div>

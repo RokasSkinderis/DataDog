@@ -5,7 +5,6 @@ import {debounceTime} from 'rxjs/operators';
 import {Account} from '../../models/Account';
 import {Hero} from '../../models/Hero';
 import {Match} from '../../models/Match';
-import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-dashboard',
@@ -32,7 +31,7 @@ export class DashboardComponent implements OnInit {
     this.matches = [];
     this.getHeroes();
 
-    this.searchInput.valueChanges.pipe(debounceTime(700)).subscribe({
+    this.searchInput.valueChanges.pipe(debounceTime(400)).subscribe({
       next: (value: string) => {
         if (value.length > 0) {
           this.Http.searchUsers(value).subscribe({
@@ -62,10 +61,13 @@ export class DashboardComponent implements OnInit {
   }
 
   getHeroes(): void {
+    // kreipiasi i api service
     this.Http.getHeroes().subscribe({
       next: (heroesList: Array<Hero>) => {
         for (const hero of heroesList) {
+          // slicina name del img src patho
           hero.name = hero.name.slice(14);
+          // Isskaido roles, del patogesnio filtravimo ir padeda tarpa po kablelio, del stiliaus, kad nebutu visos roles, vienas zodis.
           hero.roles = [hero.roles.join(', ')];
           this.heroList.push(hero);
         }

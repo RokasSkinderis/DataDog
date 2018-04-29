@@ -24,33 +24,21 @@ section {
 
 .filter ul li {
   display: inline-block;
-  width: 25%;
+  width: 33.33%;
   font-size: 20px;
   margin-bottom: 0;
   color: #0a3d62;
-}
-
-.filter ul li:nth-of-type(1),
-.filter ul li:nth-of-type(2) {
+  box-sizing: border-box;
   cursor: pointer;
-}
-
-.filter ul li label,
-.filter ul li button {
-  display: inline-block;
-  width: 50%;
 }
 
 .filter ul li label select {
   background-color: #f5f5f5;
 }
 
-.filter ul li button {
-  font-size: 16px;
-}
-
 .heroList {
   width: 25%;
+  height: 115px;
 }
 
 .hero {
@@ -61,28 +49,31 @@ section {
   -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);
   display: flex;
+  align-items: center;
 }
 
 .hero div {
-  width: 48%;
+  width: 50%;
 }
 
 .hero img {
-  width: 50%;
-  margin-right: 2%
+  margin-right: 2%;
+  height: auto;
 }
 
 .heroList .hero h5 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   margin-bottom: 0;
+  line-height: 1;
+  margin-top: 5px;
 }
 
 .hero h6 {
   font-weight: 300;
   font-size: 12px;
   margin-bottom: 0;
-  line-height: 20px;
+  line-height: 1.2;
 }
 
 .hero h6:nth-of-type(3) {
@@ -101,50 +92,21 @@ section {
   }
 }
 
-@media only screen and (max-width: 770px) {
-  section {
-    display: block;
-    font-size: 0;
-  }
-
-  .heroList {
-    overflow: hidden;
-    display: inline-block;
-    width: 50%;
-    font-size: 12px;
-  }
-
-  .filter ul li {
-    width: 50%;
-  }
-}
-
-@media only screen and (max-width: 725px) {
-  section {
-    display: block;
-  }
-
-  .heroList {
-    display: block;
-    width: 100%;
-  }
-}
-
 @media only screen and (max-width: 1140px) {
 
   .filter ul li {
     font-size: 16px;
   }
-
-  .filter ul li button {
-    font-size: 16px;
-    border: none;
-    font-weight: 300;
-  }
-
 }
 
 @media only screen and (max-width: 600px) {
+  .heroList {
+    width: 100%;
+  }
+
+  .heroList .hero h5 {
+    font-size: 14px;
+  }
 
   .filter {
     -webkit-box-shadow: none;
@@ -152,13 +114,17 @@ section {
     box-shadow: none;
   }
 
-  .filter ul li label,
-  .filter ul li button {
-    display: block;
-    width: 100%;
+  .filter ul li:nth-of-type(1) {
+    width: 24%;
+    margin-right: 1%;
   }
-}
 
-.matches {
-  color: #000;
+  .filter ul li:nth-of-type(2) {
+    width: 43%;
+    margin-right: 1%;
+  }
+
+  .filter ul li:nth-of-type(3) {
+    width: 31%;
+  }
 }

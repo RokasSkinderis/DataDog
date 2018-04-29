@@ -210,6 +210,7 @@ header h4 {
   margin: auto auto 0;
   font-size: 20px;
   color: #fff;
+  line-height: 1.2;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -294,7 +295,7 @@ header h4 {
     margin-right: 5%;
   }
 
-  .matches .match {
-    width: 50%;
+  .matches .match span {
+    font-size: 30px;
   }
 }
